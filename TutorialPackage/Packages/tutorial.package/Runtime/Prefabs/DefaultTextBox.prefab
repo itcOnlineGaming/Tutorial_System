@@ -459,7 +459,7 @@ MonoBehaviour:
   inputText: This is some Example text
   maxFontSize: 40
   minFontSize: 10
-  inputFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  inputFont: {fileID: 0}
   inputColor: {r: 0, g: 0, b: 0, a: 1}
   textBoxOptions: 514
 --- !u!114 &3554027804182011852

@@ -128,7 +128,7 @@ MonoBehaviour:
   angle: 100
   radius: 100
   inputSprite: {fileID: 21300000, guid: bf3fe7412a0697843bbaf0344c05493a, type: 3}
-  toIndicate: {fileID: 8835023582263785938}
+  toIndicate: {fileID: 0}
   movementThreshhold: 20
   speed: 50
 --- !u!1 &8835023582263785938

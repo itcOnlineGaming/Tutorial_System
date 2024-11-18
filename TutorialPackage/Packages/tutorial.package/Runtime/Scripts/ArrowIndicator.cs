@@ -20,11 +20,19 @@ public class ArrowIndicator : MonoBehaviour
 
     private float minRadius;
     private GameObject arrowObject;
+    private GameObject objectToIndicate;
 
     private void Awake()
     {
         arrowObject = transform.Find("Arrow").gameObject;
-        toIndicate = transform.Find("ObjectToIndicate").gameObject;
+        if (!toIndicate)
+        {
+            objectToIndicate = transform.Find("ObjectToIndicate").gameObject;
+        }
+        else
+        {
+            objectToIndicate = toIndicate;
+        }
     }
     /// <summary>
     /// Debug in editor
@@ -33,10 +41,13 @@ public class ArrowIndicator : MonoBehaviour
     {
         minRadius = radius;
         arrowObject = transform.Find("Arrow").gameObject;
-        toIndicate = transform.Find("ObjectToIndicate").gameObject;
-        if (inputSprite)
+        if (!toIndicate)
         {
-            arrowObject.GetComponent<Image>().sprite = inputSprite;
+            objectToIndicate = transform.Find("ObjectToIndicate").gameObject;
+        }
+        else
+        {
+            objectToIndicate = toIndicate;
         }
         setDistance();
         pointArrowAtObject();
@@ -60,8 +71,8 @@ public class ArrowIndicator : MonoBehaviour
         }
         float angleRad = angle * Mathf.Deg2Rad;
 
-        float x = toIndicate.transform.position.x + minRadius * Mathf.Cos(angleRad);
-        float y = toIndicate.transform.position.y + minRadius * Mathf.Sin(angleRad);
+        float x = objectToIndicate.transform.position.x + minRadius * Mathf.Cos(angleRad);
+        float y = objectToIndicate.transform.position.y + minRadius * Mathf.Sin(angleRad);
 
         arrowObject.GetComponent<RectTransform>().position = new Vector3(x, y, arrowObject.transform.position.z);
     }
@@ -71,7 +82,7 @@ public class ArrowIndicator : MonoBehaviour
     /// </summary>
     void pointArrowAtObject()
     {
-        Vector3 direction = toIndicate.transform.position - arrowObject.transform.position;
+        Vector3 direction = objectToIndicate.transform.position - arrowObject.transform.position;
 
         float fangle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
