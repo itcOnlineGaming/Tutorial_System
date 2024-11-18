@@ -4,13 +4,12 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-[ExecuteInEditMode]
 public class DefaultTextBox : MonoBehaviour
 {
     [Header("Background Configuration")]
     public float boxWidth;
     public float boxHeight;
-    public Image inputImage;
+    public Sprite inputSprite;
 
     [Header("Text Configuration")]
     public string inputText;
@@ -23,10 +22,11 @@ public class DefaultTextBox : MonoBehaviour
     public TextAlignmentOptions textBoxOptions;
 
     private TextMeshProUGUI text;
+    private GameObject backgroundObject;
 
     private void Awake()
     {
-        inputImage = GetComponentInChildren<Image>();
+        backgroundObject = transform.Find("BackGround").gameObject;
         text = GetComponentInChildren<TextMeshProUGUI>();
     }
     // Start is called before the first frame update
@@ -35,30 +35,47 @@ public class DefaultTextBox : MonoBehaviour
         AssignDefaultValues();
         ScaleTextToFit();
     }
-
+    /// <summary>
+    /// debug inside editor
+    /// </summary>
     private void OnValidate()
     {
-        inputImage = GetComponentInChildren<Image>();
+        backgroundObject = transform.Find("BackGround").gameObject;
         text = GetComponentInChildren<TextMeshProUGUI>();
         AssignDefaultValues();
         ScaleTextToFit();
     }
+    /// <summary>
+    /// assigns all necessary variables 
+    /// </summary>
     void AssignDefaultValues()
     {
         //Background
-        inputImage.rectTransform.sizeDelta = new Vector2(boxWidth, boxHeight);
+        backgroundObject.GetComponent<RectTransform>().sizeDelta = new Vector2(boxWidth, boxHeight);
+        if (inputSprite)
+        {
+            backgroundObject.GetComponent<Image>().sprite = inputSprite;
+        }
+        backgroundObject.GetComponent<Image>().sprite = inputSprite;
         //Text
         text.text = inputText;
         text.color = inputColor;
         text.alignment = textBoxOptions;
-        text.font = inputFont;
+        if (inputFont)
+        {
+            text.font = inputFont;
+        }
     }
+
+    /// <summary>
+    /// Scales text to fit inside of background bounds
+    /// </summary>
     void ScaleTextToFit()
     {
-        if (text != null && inputImage != null)
+        if (text != null && backgroundObject != null)
         {
-            RectTransform textRect = text.GetComponent<RectTransform>();
-            RectTransform backgroundRect = inputImage.GetComponent<RectTransform>();
+            RectTransform textRect = text.gameObject.GetComponent<RectTransform>();
+            RectTransform backgroundRect = backgroundObject.GetComponent<RectTransform>();
 
             text.enableAutoSizing = true;
 
