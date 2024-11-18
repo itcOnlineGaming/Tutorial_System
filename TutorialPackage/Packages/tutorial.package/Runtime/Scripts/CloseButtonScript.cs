@@ -52,6 +52,6 @@ public class CloseButtonScript : MonoBehaviour
     }
     public void ClosePopUp()
     {
-        Destroy(transform.parent.gameObject); //destory pop up 
+        Destroy(gameObject); //destory pop up 
     }
 }

@@ -41,6 +41,10 @@ public class ArrowIndicator : MonoBehaviour
     {
         minRadius = radius;
         arrowObject = transform.Find("Arrow").gameObject;
+        if (inputSprite)
+        {
+            arrowObject.GetComponent<Image>().sprite = inputSprite;
+        }
         if (!toIndicate)
         {
             objectToIndicate = transform.Find("ObjectToIndicate").gameObject;
