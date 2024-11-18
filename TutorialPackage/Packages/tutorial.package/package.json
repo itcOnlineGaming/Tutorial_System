@@ -1,0 +1,7 @@
+{
+    "name": "tutorial.package",
+    "version": "0.1.0",
+    "displayName": "Tutorial Package",
+    "description": "Package for tutorial pop ups",
+    "unity": "2022.3"
+}
