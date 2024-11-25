@@ -12,7 +12,18 @@ public class PopUpManager : MonoBehaviour
 
     [SerializeField] private Transform point;
 
-    public TutorialEventManager TutorialEventManager;
+    private static TutorialEventManager _eventManager;
+    public static TutorialEventManager TutorialEventManager
+    {
+        get
+        {
+            if (_eventManager == null)
+            {
+                _eventManager = TutorialEventManager.Instance;
+            }
+            return _eventManager;
+        }
+    }
 
     private List<GameObject> popUpsList;
 
