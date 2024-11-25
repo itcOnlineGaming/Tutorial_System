@@ -12,6 +12,8 @@ public class PopUpManager : MonoBehaviour
 
     [SerializeField] private Transform point;
 
+    public TutorialEventManager EventManager;
+
     private List<GameObject> popUpsList;
 
     private void Start()
@@ -28,7 +30,7 @@ public class PopUpManager : MonoBehaviour
         };
 
         //ShowDefaultTextBoxPopUp(temp,point);
-        ShowTextBoxWithImage(temp, point);
+        //ShowTextBoxWithImage(temp, point);
         //ShowArrowPopUp(point);
     }
 
