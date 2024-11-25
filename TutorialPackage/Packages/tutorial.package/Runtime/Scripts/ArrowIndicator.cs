@@ -11,12 +11,11 @@ public class ArrowIndicator : MonoBehaviour
     public float radius;
     public Sprite inputSprite;
 
-    [Header("Object To Indicate")]
-    public GameObject toIndicate;
-
     [Header("Movement Threshold")]
     public float movementThreshhold = 20f;
     public float speed = 5f;
+
+    private Transform toIndicate;
 
     private float minRadius;
     private GameObject arrowObject;
@@ -25,36 +24,11 @@ public class ArrowIndicator : MonoBehaviour
     private void Awake()
     {
         arrowObject = transform.Find("Arrow").gameObject;
-        if (!toIndicate)
-        {
-            objectToIndicate = transform.Find("ObjectToIndicate").gameObject;
-        }
-        else
-        {
-            objectToIndicate = toIndicate;
-        }
     }
-    /// <summary>
-    /// Debug in editor
-    /// </summary>
-    private void OnValidate()
+
+    public void setObjectToIndicate(Transform position)
     {
-        minRadius = radius;
-        arrowObject = transform.Find("Arrow").gameObject;
-        if (inputSprite)
-        {
-            arrowObject.GetComponent<Image>().sprite = inputSprite;
-        }
-        if (!toIndicate)
-        {
-            objectToIndicate = transform.Find("ObjectToIndicate").gameObject;
-        }
-        else
-        {
-            objectToIndicate = toIndicate;
-        }
-        setDistance();
-        pointArrowAtObject();
+        toIndicate = position;
     }
     void Start()
     {
@@ -75,8 +49,8 @@ public class ArrowIndicator : MonoBehaviour
         }
         float angleRad = angle * Mathf.Deg2Rad;
 
-        float x = objectToIndicate.transform.position.x + minRadius * Mathf.Cos(angleRad);
-        float y = objectToIndicate.transform.position.y + minRadius * Mathf.Sin(angleRad);
+        float x = toIndicate.position.x + minRadius * Mathf.Cos(angleRad);
+        float y = toIndicate.position.y + minRadius * Mathf.Sin(angleRad);
 
         arrowObject.GetComponent<RectTransform>().position = new Vector3(x, y, arrowObject.transform.position.z);
     }
@@ -86,7 +60,7 @@ public class ArrowIndicator : MonoBehaviour
     /// </summary>
     void pointArrowAtObject()
     {
-        Vector3 direction = objectToIndicate.transform.position - arrowObject.transform.position;
+        Vector3 direction = toIndicate.position - arrowObject.transform.position;
 
         float fangle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
@@ -106,5 +80,10 @@ public class ArrowIndicator : MonoBehaviour
         setDistance();
         pointArrowAtObject();
         animateArrow();
+    }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
     }
 }

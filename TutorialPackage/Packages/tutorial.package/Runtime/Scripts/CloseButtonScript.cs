@@ -14,44 +14,28 @@ public class CloseButtonScript : MonoBehaviour
 
     //caribales for objects required
     private GameObject buttonObject;
-    private GameObject backgroundObject;
 
     private void Awake()
     {
-        backgroundObject = transform.Find("Background").gameObject;
-        buttonObject = transform.Find("CloseButton").gameObject;
-    }
-    /// <summary>
-    /// debug in editor
-    /// </summary>
-    private void OnValidate()
-    {
-        backgroundObject = transform.Find("BackGround").gameObject;
-        buttonObject = transform.Find("CloseButton").gameObject;
-        MoveToTopRight();
-    }
-
-    private void Start()
-    {
-        MoveToTopRight();
+        buttonObject = this.gameObject;
     }
     /// <summary>
     /// moves button object to top right
     /// </summary>
-    private void MoveToTopRight()
+    public void MoveToTopRight(Vector2 scale)
     {
-        RectTransform backgroundRect = backgroundObject.GetComponent<RectTransform>();
         RectTransform buttonRect = buttonObject.GetComponent<RectTransform>();
 
         Vector2 topRight = new Vector2(
-         backgroundRect.sizeDelta.x / 2 - (buttonRect.sizeDelta.x / 2) - padding, // divide the size by 2 as we are starting from the center, subtract padding
-         backgroundRect.sizeDelta.y / 2 - (buttonRect.sizeDelta.y / 2) - padding
+         scale.x - (buttonRect.rect.size.x / 2) - padding, // divide the size by 2 as we are starting from the center, subtract padding
+         scale.y - (buttonRect.rect.size.y / 2) - padding
      );
-
+        
         buttonRect.anchoredPosition = topRight; //set position
+
     }
     public void ClosePopUp()
     {
-        Destroy(gameObject); //destory pop up 
+        Destroy(transform.parent.gameObject); //destory pop up 
     }
 }
