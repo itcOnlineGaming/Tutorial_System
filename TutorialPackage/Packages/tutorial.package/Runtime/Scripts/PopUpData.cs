@@ -17,4 +17,6 @@ public class PopUpData
     public Sprite BackgroundImage;
     public Sprite extraImage;
     public bool IsClosable;
+
+    public float lifeTime;
 }

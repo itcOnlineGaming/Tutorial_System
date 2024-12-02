@@ -56,6 +56,7 @@ public class PopUpManager : MonoBehaviour
     {
         var popup = Instantiate(TextBoxPrefab, position);
         popup.GetComponentInChildren<DefaultTextBox>().setUp(data);
+        popup.GetComponent<LifeTime>().SetLifetime(data.lifeTime);
         // popUpsList.Add(popup);
     }
 
