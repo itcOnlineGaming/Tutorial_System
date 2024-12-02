@@ -52,11 +52,11 @@ public class PopUpManager : MonoBehaviour
        // popUpsList.Add(popup);
     }
 
-    public void ShowDefaultTextBoxPopUp(PopUpData data, Transform position)
+    public void ShowDefaultTextBoxPopUp(Transform position, PopUpData data)
     {
         var popup = Instantiate(TextBoxPrefab, position);
         popup.GetComponentInChildren<DefaultTextBox>().setUp(data);
-       // popUpsList.Add(popup);
+        // popUpsList.Add(popup);
     }
 
     public void ShowTextBoxWithImage(PopUpData data, Transform position)
