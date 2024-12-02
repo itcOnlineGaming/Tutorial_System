@@ -606,6 +606,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DefaultTextObject
       objectReference: {fileID: 0}
+    - target: {fileID: 5222273911943329020, guid: 22c424929547e684cb4a5d416d590e8b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6701743757720016237, guid: 22c424929547e684cb4a5d416d590e8b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

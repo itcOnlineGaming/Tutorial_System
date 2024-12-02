@@ -46,6 +46,10 @@ public class DefaultTextBox : MonoBehaviour
             closeButtonScript = GetComponentInChildren<CloseButtonScript>();
             closeButtonScript.MoveToTopRight(backgroundObject.GetComponent<RectTransform>().sizeDelta);
         }
+        else
+        {
+            Destroy(closeButtonScript.gameObject);
+        }
     }
 
     /// <summary>

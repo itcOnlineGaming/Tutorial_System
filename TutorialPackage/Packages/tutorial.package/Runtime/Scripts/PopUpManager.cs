@@ -38,9 +38,10 @@ public class PopUpManager : MonoBehaviour
             textColor = Color.black,
             fontAsset = null,
             IsClosable = false,
+            lifeTime = 3,
         };
 
-        //ShowDefaultTextBoxPopUp(temp,point);
+        ShowDefaultTextBoxPopUp(point, temp);
         //ShowTextBoxWithImage(temp, point);
         //ShowArrowPopUp(point);
     }
