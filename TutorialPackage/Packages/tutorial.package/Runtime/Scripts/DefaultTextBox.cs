@@ -21,7 +21,7 @@ public class DefaultTextBox : MonoBehaviour
 
     private void Awake()
     {
-        backgroundObject = transform.Find("DefaultTextBox/BackGround").gameObject;
+        backgroundObject = GetComponentInChildren<Image>().transform.parent.gameObject; // transform.Find("DefaultTextBox/BackGround").gameObject;
         text = GetComponentInChildren<TextMeshProUGUI>();
         closeButtonScript = GetComponentInChildren<CloseButtonScript>();
     }

@@ -31,7 +31,7 @@ public class PopUpManager : MonoBehaviour
     {
         PopUpData temp = new PopUpData
         {
-            BodyText = "You ran out of time for this question.",
+            BodyText = "Try Shaking your device to roll the dice!",
             BackgroundImage = null,
             width = 400,
             height = 300,
