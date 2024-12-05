@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using Codice.CM.Common;
+
 public class ArrowIndicator : MonoBehaviour
 {
     [Header("Arrow Configuration")]
