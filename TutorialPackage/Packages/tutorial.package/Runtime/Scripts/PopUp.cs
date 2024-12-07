@@ -4,7 +4,5 @@ using UnityEngine;
 
 public class PopUp : MonoBehaviour
 {
-   public PopUpData popUpData;
-
-    public ArrowPopUpData ArrowpopUpData;
+    public PopUpData popUpData = new PopUpData();
 }

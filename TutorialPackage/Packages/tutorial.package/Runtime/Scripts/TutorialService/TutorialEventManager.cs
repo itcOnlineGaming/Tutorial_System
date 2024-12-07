@@ -27,14 +27,6 @@ public class TutorialEventManager : MonoBehaviour
             return _instance;
         }
     }
-    public void Subscribe(TutorialEvent gameEvent, Action<Transform, ArrowPopUpData> listener)
-    {
-        if (!eventListeners.ContainsKey(gameEvent))
-        {
-            eventListeners[gameEvent] = null;
-        }
-        eventListeners[gameEvent] = (Action<Transform, ArrowPopUpData>)eventListeners[gameEvent] + listener;
-    }
     public void Subscribe(TutorialEvent gameEvent, Action<Transform, PopUpData> listener)
     {
         if (!eventListeners.ContainsKey(gameEvent))
@@ -42,14 +34,6 @@ public class TutorialEventManager : MonoBehaviour
             eventListeners[gameEvent] = null;
         }
         eventListeners[gameEvent] = (Action<Transform, PopUpData>)eventListeners[gameEvent] + listener;
-    }
-
-    public void RaiseEvent(TutorialEvent gameEvent, Transform eventData, ArrowPopUpData data)
-    {
-        if (eventListeners.ContainsKey(gameEvent) && eventListeners[gameEvent] is Action<Transform, ArrowPopUpData> action)
-        {
-            action.Invoke(eventData, data);
-        }
     }
     public void RaiseEvent(TutorialEvent gameEvent, Transform eventData, PopUpData data)
     {

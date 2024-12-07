@@ -5,28 +5,21 @@ using UnityEngine;
 
 public class PopUpData
 {
-    //sizing
     public int width;
     public int height;
-    //font
+
+    public float lifeTime;
+    public int popUpId;
+
     public TMP_FontAsset fontAsset;
-    //
+
     public Color textColor;
 
     public string BodyText;
     public Sprite BackgroundImage;
 
-    public float lifeTime;
-
-    public int popUpId;
-}
-
-public class ArrowPopUpData
-{
-    public float lifeTime;
-
-    public int popUpId;
-
+    //arrow 
     public int radius;
     public int angle;
 }
+

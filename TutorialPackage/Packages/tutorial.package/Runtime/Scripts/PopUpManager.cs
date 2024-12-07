@@ -27,57 +27,6 @@ public class PopUpManager : MonoBehaviour
 
     private List<GameObject> popUpsList = new List<GameObject>();
 
-    private void Start()
-    {
-        PopUpData temp = new PopUpData
-        {
-            BodyText = "Oopsie",
-            BackgroundImage = null,
-            width = 400,
-            height = 300,
-            textColor = Color.black,
-            fontAsset = null,
-            lifeTime = 300,
-            popUpId = 0,
-        };
-
-        ArrowPopUpData tempf = new ArrowPopUpData
-        {
-            angle = 46,
-            radius = 60,
-            lifeTime = 3,
-            popUpId = 0,
-        };
-
-        //ShowDefaultTextBoxPopUp(point, temp);
-
-        //ShowArrowPopUp(point, tempf);
-
-        //ShowShakePopUp(point, temp);
-
-        //StartCoroutine(test());
-    }
-
-    public IEnumerator test()
-    {
-        PopUpData temp = new PopUpData
-        {
-            BodyText = "Oopsie",
-            BackgroundImage = null,
-            width = 400,
-            height = 300,
-            textColor = Color.black,
-            fontAsset = null,
-            lifeTime = 300,
-            popUpId = 0,
-        };
-
-        ShowDefaultTextBoxPopUp(point, temp);
-
-        yield return new WaitForSeconds(2);
-        closePopUp(0);
-    }
-
     public void ShowShakePopUp(Transform position, PopUpData data)
     {
         GameObject popup = Instantiate(ShakePrefab, position);
@@ -86,12 +35,13 @@ public class PopUpManager : MonoBehaviour
         popup.GetComponent<LifeTime>().SetLifetime(data.lifeTime);
         popUpsList.Add(popup);
     }
-    public void ShowArrowPopUp(Transform position, ArrowPopUpData data)
+    public void ShowArrowPopUp(Transform position, PopUpData data)
     {
         GameObject popup = Instantiate(ArrowPrefab, position);
-        popup.GetComponent<PopUp>().ArrowpopUpData = data;
+        popup.GetComponent<PopUp>().popUpData = data;
         popup.GetComponent<ArrowIndicator>().SetUp(data);
         popup.GetComponent<ArrowIndicator>().setObjectToIndicate(position);
+        popup.GetComponent<LifeTime>().SetLifetime(data.lifeTime);
         popUpsList.Add(popup);
     }
 
