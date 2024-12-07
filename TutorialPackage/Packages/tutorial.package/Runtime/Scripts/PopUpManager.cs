@@ -106,14 +106,20 @@ public class PopUpManager : MonoBehaviour
 
     public void closePopUp(int id)
     {
+        List<GameObject> toRemove = new List<GameObject>();
+
         foreach (var item in popUpsList)
         {
             if (item.GetComponent<PopUp>().popUpData.popUpId == id)
-            { 
-                Destroy(item);
-                popUpsList.Remove(item);
-                break;
+            {
+                toRemove.Add(item);  // Add to the list to be destroyed
             }
+        }
+
+        foreach (var item in toRemove)
+        {
+            Destroy(item); // Destroy the GameObject
+            popUpsList.Remove(item); // Remove the item from the list
         }
     }
 }
