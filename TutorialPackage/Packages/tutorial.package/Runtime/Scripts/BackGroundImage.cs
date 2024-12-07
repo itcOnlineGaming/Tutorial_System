@@ -9,7 +9,7 @@ public class BackGroundImage : MonoBehaviour
     {
         gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(data.width, data.height);
 
-        if(data.BackgroundImage != null)
+        if (data.BackgroundImage != null)
         {
             gameObject.GetComponent<Image>().sprite = data.BackgroundImage;
         }

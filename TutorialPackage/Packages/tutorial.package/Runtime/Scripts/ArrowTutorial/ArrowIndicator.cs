@@ -27,7 +27,7 @@ public class ArrowIndicator : MonoBehaviour
         arrowObject = transform.Find("Arrow").gameObject;
     }
 
-    public void SetUp(PopUpData arrowPopUpData)
+    public void SetUp(ArrowPopUpData arrowPopUpData)
     {
         angle = arrowPopUpData.angle;
         radius = arrowPopUpData.radius;

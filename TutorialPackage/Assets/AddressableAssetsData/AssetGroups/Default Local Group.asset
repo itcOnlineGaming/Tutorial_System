@@ -27,6 +27,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 45b447ce97ce49b4694d9b1487272b25
+    m_Address: Packages/tutorial.package/Assets/swipe-left_11243176.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0521f3852b0c81c45ab79ed8651c454b, type: 2}
   m_SchemaSet:

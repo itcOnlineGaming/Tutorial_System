@@ -17,9 +17,16 @@ public class PopUpData
 
     public string BodyText;
     public Sprite BackgroundImage;
+}
 
-    //arrow 
+public class ArrowPopUpData : PopUpData
+{
     public int radius;
     public int angle;
+}
+
+public class SwipePopUpData : PopUpData
+{
+    public string state;
 }
 

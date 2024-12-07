@@ -2,5 +2,6 @@ public enum TutorialEvent
 {
     ArrowTutorial,
     TextBoxTutorial,
-    ShakeTutorial
+    ShakeTutorial,
+    SwipeTutorial
 }
