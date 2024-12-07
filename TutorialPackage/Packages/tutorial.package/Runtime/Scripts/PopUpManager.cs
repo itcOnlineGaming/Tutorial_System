@@ -31,14 +31,13 @@ public class PopUpManager : MonoBehaviour
     {
         PopUpData temp = new PopUpData
         {
-            BodyText = "Try Shaking your device to roll the dice!",
+            BodyText = "Oopsie",
             BackgroundImage = null,
             width = 400,
             height = 300,
             textColor = Color.black,
             fontAsset = null,
-            IsClosable = false,
-            lifeTime = 3,
+            lifeTime = 300,
             popUpId = 0,
         };
 
@@ -51,10 +50,32 @@ public class PopUpManager : MonoBehaviour
         };
 
         //ShowDefaultTextBoxPopUp(point, temp);
-        //ShowTextBoxWithImage(temp, point);
+
         //ShowArrowPopUp(point, tempf);
 
-        ShowShakePopUp(point, temp);
+        //ShowShakePopUp(point, temp);
+
+        //StartCoroutine(test());
+    }
+
+    public IEnumerator test()
+    {
+        PopUpData temp = new PopUpData
+        {
+            BodyText = "Oopsie",
+            BackgroundImage = null,
+            width = 400,
+            height = 300,
+            textColor = Color.black,
+            fontAsset = null,
+            lifeTime = 300,
+            popUpId = 0,
+        };
+
+        ShowDefaultTextBoxPopUp(point, temp);
+
+        yield return new WaitForSeconds(2);
+        closePopUp(0);
     }
 
     public void ShowShakePopUp(Transform position, PopUpData data)
@@ -91,7 +112,7 @@ public class PopUpManager : MonoBehaviour
             { 
                 Destroy(item);
                 popUpsList.Remove(item);
-            
+                break;
             }
         }
     }

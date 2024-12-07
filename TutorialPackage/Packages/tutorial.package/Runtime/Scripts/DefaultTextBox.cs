@@ -17,13 +17,10 @@ public class DefaultTextBox : MonoBehaviour
    
     private GameObject backgroundObject;
 
-    private CloseButtonScript closeButtonScript;
-
     private void Awake()
     {
         backgroundObject = GetComponentInChildren<Image>().transform.parent.gameObject; // transform.Find("DefaultTextBox/BackGround").gameObject;
         text = GetComponentInChildren<TextMeshProUGUI>();
-        closeButtonScript = GetComponentInChildren<CloseButtonScript>();
     }
 
     public void setUp(PopUpData data)
@@ -41,15 +38,6 @@ public class DefaultTextBox : MonoBehaviour
 
         AssignDefaultValues();
         ScaleTextToFit();
-        if (data.IsClosable)
-        {
-            closeButtonScript = GetComponentInChildren<CloseButtonScript>();
-            closeButtonScript.MoveToTopRight(backgroundObject.GetComponent<RectTransform>().sizeDelta);
-        }
-        else
-        {
-            Destroy(closeButtonScript.gameObject);
-        }
     }
 
     /// <summary>
@@ -69,7 +57,6 @@ public class DefaultTextBox : MonoBehaviour
     {
         if (text != null && backgroundObject != null)
         {
-            Debug.Log("scaling");
             RectTransform textRect = text.gameObject.GetComponent<RectTransform>();
             RectTransform backgroundRect = backgroundObject.GetComponent<RectTransform>();
 
@@ -78,7 +65,7 @@ public class DefaultTextBox : MonoBehaviour
             text.fontSizeMin = minFontSize; // Smallest font size
             text.fontSizeMax = maxFontSize; // Largest font size
 
-            //set text width and height to fit within the background's bounds (optional 90% padding)
+            // Set text width and height to fit within the background's bounds (optional 80% padding)
             textRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, backgroundRect.rect.width * 0.8f);
             textRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, backgroundRect.rect.height * 0.8f);
 
@@ -87,12 +74,10 @@ public class DefaultTextBox : MonoBehaviour
             textRect.anchorMax = new Vector2(0.5f, 0.5f);
             textRect.pivot = new Vector2(0.5f, 0.5f);
 
-            // Center the text object relative to the background
-            textRect.anchoredPosition = Vector2.zero;
+            // Center the text relative to the background
+            textRect.anchoredPosition = Vector2.zero; // This will already center the text since anchors are at 0.5, 0.5
 
-            // Calculate and adjust the position to center the text relative to the background
-            Vector2 backgroundCenter = backgroundRect.rect.size * 0.5f; // Center point of the background
-            textRect.anchoredPosition = new Vector2(backgroundCenter.x, backgroundCenter.y); // Center position
+            text.alignment = TextAlignmentOptions.Center;
         }
     }
 

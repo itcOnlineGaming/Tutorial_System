@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 221293670170023195}
   - component: {fileID: 6432189115517776472}
   - component: {fileID: -3487257194656998546}
+  - component: {fileID: 6677296459340272487}
   m_Layer: 5
   m_Name: ArrowIndicator
   m_TagString: Untagged
@@ -170,6 +171,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+--- !u!114 &6677296459340272487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3249283317847853656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d56bcc8101d4ca43aec703efc275436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8835023582263785938
 GameObject:
   m_ObjectHideFlags: 0
