@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6544733759514786017}
   - component: {fileID: 4597304312724630782}
   - component: {fileID: 8269176406168506152}
+  - component: {fileID: 4321755000073449510}
   m_Layer: 5
   m_Name: Arrow
   m_TagString: Untagged
@@ -65,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bf3fe7412a0697843bbaf0344c05493a, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -75,6 +76,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4321755000073449510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390824159572421028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ea88720c976b1459dc9d0528ab9994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteAddress: Packages/tutorial.package/Assets/Arrow.png
 --- !u!1 &3249283317847853656
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,6 +99,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1235510897745161967}
   - component: {fileID: 221293670170023195}
+  - component: {fileID: 6432189115517776472}
+  - component: {fileID: -3487257194656998546}
   m_Layer: 5
   m_Name: ArrowIndicator
   m_TagString: Untagged
@@ -127,10 +143,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angle: 100
   radius: 100
-  inputSprite: {fileID: 21300000, guid: bf3fe7412a0697843bbaf0344c05493a, type: 3}
-  toIndicate: {fileID: 0}
   movementThreshhold: 20
   speed: 50
+--- !u!114 &6432189115517776472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3249283317847853656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86cc431e6f63674da02b678351851b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3487257194656998546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3249283317847853656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c436c844a421ada4f9662f9668a77b58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
 --- !u!1 &8835023582263785938
 GameObject:
   m_ObjectHideFlags: 0

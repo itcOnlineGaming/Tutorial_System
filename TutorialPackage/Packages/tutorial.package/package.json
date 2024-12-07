@@ -5,7 +5,8 @@
     "description": "Package for tutorial pop ups",
     "unity": "2022.3",
     "dependencies": {
-        "com.unity.textmeshpro": "3.0.9"
+        "com.unity.textmeshpro": "3.0.9",
+ 	"com.unity.addressables": "1.21.3"
     },
     "keywords": ["runtime", "tmpro"]
 }

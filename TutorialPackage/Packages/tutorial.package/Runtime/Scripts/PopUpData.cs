@@ -15,8 +15,19 @@ public class PopUpData
 
     public string BodyText;
     public Sprite BackgroundImage;
-    public Sprite extraImage;
     public bool IsClosable;
 
     public float lifeTime;
+
+    public int popUpId;
+}
+
+public class ArrowPopUpData
+{
+    public float lifeTime;
+
+    public int popUpId;
+
+    public int radius;
+    public int angle;
 }

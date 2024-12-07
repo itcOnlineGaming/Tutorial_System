@@ -27,13 +27,13 @@ public class TutorialEventManager : MonoBehaviour
             return _instance;
         }
     }
-    public void Subscribe(TutorialEvent gameEvent, Action<Transform> listener)
+    public void Subscribe(TutorialEvent gameEvent, Action<Transform, ArrowPopUpData> listener)
     {
         if (!eventListeners.ContainsKey(gameEvent))
         {
             eventListeners[gameEvent] = null;
         }
-        eventListeners[gameEvent] = (Action<Transform>)eventListeners[gameEvent] + listener;
+        eventListeners[gameEvent] = (Action<Transform, ArrowPopUpData>)eventListeners[gameEvent] + listener;
     }
     public void Subscribe(TutorialEvent gameEvent, Action<Transform, PopUpData> listener)
     {
@@ -44,11 +44,11 @@ public class TutorialEventManager : MonoBehaviour
         eventListeners[gameEvent] = (Action<Transform, PopUpData>)eventListeners[gameEvent] + listener;
     }
 
-    public void RaiseEvent(TutorialEvent gameEvent, Transform eventData)
+    public void RaiseEvent(TutorialEvent gameEvent, Transform eventData, ArrowPopUpData data)
     {
-        if (eventListeners.ContainsKey(gameEvent) && eventListeners[gameEvent] is Action<Transform> action)
+        if (eventListeners.ContainsKey(gameEvent) && eventListeners[gameEvent] is Action<Transform, ArrowPopUpData> action)
         {
-            action.Invoke(eventData);
+            action.Invoke(eventData, data);
         }
     }
     public void RaiseEvent(TutorialEvent gameEvent, Transform eventData, PopUpData data)

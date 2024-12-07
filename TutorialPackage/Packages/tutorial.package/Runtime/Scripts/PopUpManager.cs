@@ -8,7 +8,7 @@ public class PopUpManager : MonoBehaviour
 {
     [SerializeField] private GameObject TextBoxPrefab;
     [SerializeField] private GameObject ArrowPrefab;
-    [SerializeField] private GameObject TextBoxWithImagePrefab;
+    [SerializeField] private GameObject ShakePrefab;
 
     [SerializeField] private Transform point;
 
@@ -25,7 +25,7 @@ public class PopUpManager : MonoBehaviour
         }
     }
 
-    private List<GameObject> popUpsList;
+    private List<GameObject> popUpsList = new List<GameObject>();
 
     private void Start()
     {
@@ -39,40 +39,60 @@ public class PopUpManager : MonoBehaviour
             fontAsset = null,
             IsClosable = false,
             lifeTime = 3,
+            popUpId = 0,
         };
 
-        ShowDefaultTextBoxPopUp(point, temp);
+        ArrowPopUpData tempf = new ArrowPopUpData
+        {
+            angle = 46,
+            radius = 60,
+            lifeTime = 3,
+            popUpId = 0,
+        };
+
+        //ShowDefaultTextBoxPopUp(point, temp);
         //ShowTextBoxWithImage(temp, point);
-        //ShowArrowPopUp(point);
+        //ShowArrowPopUp(point, tempf);
+
+        ShowShakePopUp(point, temp);
     }
 
-    public void ShowArrowPopUp(Transform position)
+    public void ShowShakePopUp(Transform position, PopUpData data)
     {
-        var popup = Instantiate(ArrowPrefab, position);
+        GameObject popup = Instantiate(ShakePrefab, position);
+        popup.GetComponent<PopUp>().popUpData = data;
+        popup.GetComponentInChildren<BackGroundImage>().SetUpImage(data);
+        popup.GetComponent<LifeTime>().SetLifetime(data.lifeTime);
+        popUpsList.Add(popup);
+    }
+    public void ShowArrowPopUp(Transform position, ArrowPopUpData data)
+    {
+        GameObject popup = Instantiate(ArrowPrefab, position);
+        popup.GetComponent<PopUp>().ArrowpopUpData = data;
+        popup.GetComponent<ArrowIndicator>().SetUp(data);
         popup.GetComponent<ArrowIndicator>().setObjectToIndicate(position);
-       // popUpsList.Add(popup);
+        popUpsList.Add(popup);
     }
 
     public void ShowDefaultTextBoxPopUp(Transform position, PopUpData data)
     {
         var popup = Instantiate(TextBoxPrefab, position);
+        popup.GetComponent<PopUp>().popUpData = data;
         popup.GetComponentInChildren<DefaultTextBox>().setUp(data);
         popup.GetComponent<LifeTime>().SetLifetime(data.lifeTime);
-        // popUpsList.Add(popup);
+        popUpsList.Add(popup);
     }
 
-    public void ShowTextBoxWithImage(PopUpData data, Transform position)
-    {
-        GameObject popup = Instantiate(TextBoxWithImagePrefab, position);
-        popup.GetComponent<TextBoxWithImage>().setUpText(data);
-       // popUpsList.Add(popup); //error here
-    }
-
-    public void closeActivePopUps()
+    public void closePopUp(int id)
     {
         foreach (var item in popUpsList)
         {
-            Destroy(item);
+            if (item.GetComponent<PopUp>().popUpData.popUpId == id)
+            { 
+                Destroy(item);
+                popUpsList.Remove(item);
+            
+            }
         }
     }
 }

@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class ArrowIndicator : MonoBehaviour
 {
     [Header("Arrow Configuration")]
     public float angle;
     public float radius;
-    public Sprite inputSprite;
 
     [Header("Movement Threshold")]
     public float movementThreshhold = 20f;
@@ -26,6 +27,12 @@ public class ArrowIndicator : MonoBehaviour
         arrowObject = transform.Find("Arrow").gameObject;
     }
 
+    public void SetUp(ArrowPopUpData arrowPopUpData)
+    {
+        angle = arrowPopUpData.angle;
+        radius = arrowPopUpData.radius;
+    }
+
     public void setObjectToIndicate(Transform position)
     {
         toIndicate = position;
@@ -33,10 +40,6 @@ public class ArrowIndicator : MonoBehaviour
     void Start()
     {
         minRadius = radius;
-        if (inputSprite)
-        {
-            arrowObject.GetComponent<Image>().sprite = inputSprite;
-        }
     }
     /// <summary>
     /// Sets arrow distance based on a cricle circumference and radius with the center point being set
