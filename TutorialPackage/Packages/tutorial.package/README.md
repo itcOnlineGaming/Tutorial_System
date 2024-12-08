@@ -19,16 +19,7 @@ along with GNU Emacs.  If not, see the [GNU licence web page](http://www.gnu.org
 
 ##  Description:
 This package handles a variety of pop ups in order to explain certain game aspects in a visual manner. This acts as a tutorial system.
+Read Doc for usage : https://docs.google.com/document/d/1mZ19B34elIsAlphaU4kHJua4XtTTI6IuHAikSOxyTN8/edit?usp=sharing
 
 
-## Default Text Box
-This is the default text only pop up which holds text, a background image and a close button.
-1. **Box Width** Width of tutorial box.
-2. **Box height** Height of tutorial box.
-3. **inputImage** Background image of the box.
 4. **inputText** Desired text for the pop up.
-5. **Fontsize** Scale font with box size, set up a min and max.
-6. **Inputfont** Possibility of changing font.
-7. **InputColor** Color of the text.
-8. **TextBoxOption** Options to format text.
-
