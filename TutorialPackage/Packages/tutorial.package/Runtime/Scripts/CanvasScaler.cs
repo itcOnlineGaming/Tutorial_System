@@ -17,7 +17,10 @@ public class Scaler : MonoBehaviour
         // Get the Canvas Scaler
         CanvasScaler scaler = canvas.GetComponent<CanvasScaler>();
 
-        // Adjust scaling dynamically (example)
-        scaler.referenceResolution = new Vector2(Screen.width, Screen.height);
+        if (scaler != null)
+        {
+            // Adjust scaling dynamically (example)
+            scaler.referenceResolution = new Vector2(Screen.width, Screen.height);
+        }
     }
 }
