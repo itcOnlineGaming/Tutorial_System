@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9806cd32a30a5ca4d9faf9f17fae5ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PopUpImage: {fileID: 0}
+  PopUpImage: {fileID: 21300000, guid: bf3fe7412a0697843bbaf0344c05493a, type: 3}
   fontAsset: {fileID: 0}
   popUpManager: {fileID: 977047899}
   position: {fileID: 1919719086}
