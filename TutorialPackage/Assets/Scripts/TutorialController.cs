@@ -69,7 +69,7 @@ public class TutorialController : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        popUpManager.CloseAllPopUps();
+        popUpManager.closePopUp(0);
     }
 
     // Update is called once per frame

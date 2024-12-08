@@ -26,8 +26,6 @@ public class PopUpManager : MonoBehaviour
         }
     }
 
-    private List<GameObject> popUpsList = new List<GameObject>();
-
     public void ShowSwipePopUp(Transform position, SwipePopUpData data)
     {
         GameObject popup = Instantiate(SwipePrefab, position);
@@ -38,7 +36,6 @@ public class PopUpManager : MonoBehaviour
         popup.GetComponentInChildren<BackGroundImage>().SetUpImage(data);
         popup.GetComponent<LifeTime>().SetLifetime(data.lifeTime);
         popup.GetComponent<SwipeController>().SetSwipe(data.state);
-        popUpsList.Add(popup);
     }
     public void ShowShakePopUp(Transform position, PopUpData data)
     {
@@ -49,8 +46,6 @@ public class PopUpManager : MonoBehaviour
 
         popup.GetComponentInChildren<BackGroundImage>().SetUpImage(data);
         popup.GetComponent<LifeTime>().SetLifetime(data.lifeTime);
-
-        popUpsList.Add(popup);
     }
     public void ShowArrowPopUp(Transform position, ArrowPopUpData data)
     {
@@ -62,8 +57,6 @@ public class PopUpManager : MonoBehaviour
         popup.GetComponent<ArrowIndicator>().SetUp(data);
         popup.GetComponent<ArrowIndicator>().setObjectToIndicate(position);
         popup.GetComponent<LifeTime>().SetLifetime(data.lifeTime);
-
-        popUpsList.Add(popup);
     }
 
     public void ShowDefaultTextBoxPopUp(Transform position, PopUpData data)
@@ -75,42 +68,33 @@ public class PopUpManager : MonoBehaviour
 
         popup.GetComponentInChildren<DefaultTextBox>().setUp(data);
         popup.GetComponent<LifeTime>().SetLifetime(data.lifeTime);
-
-        popUpsList.Add(popup);
     }
 
     public void CloseAllPopUps()
     {
-        List<GameObject> toRemove = new List<GameObject>();
+        // Find all GameObjects with the PoPuP component
+        var popUps = FindObjectsOfType<PopUp>();
 
-        foreach (var item in popUpsList)
+        foreach (var popUp in popUps)
         {
-           toRemove.Add(item);  // Add to the list to be destroyed
-        }
-
-        foreach (var item in toRemove)
-        {
-            Destroy(item); // Destroy the GameObject
-            popUpsList.Remove(item); // Remove the item from the list
+            Destroy(popUp.gameObject); // Destroy the GameObject associated with the component
         }
     }
 
     public void closePopUp(int id)
     {
-        List<GameObject> toRemove = new List<GameObject>();
+        var popUps = FindObjectsOfType<PopUp>();
 
-        foreach (var item in popUpsList)
+        foreach (var item in popUps)
         {
-            if (item.GetComponent<PopUp>().popUpData.popUpId == id)
+            if (item != null)
             {
-                toRemove.Add(item);  // Add to the list to be destroyed
+                if (item.popUpData.popUpId == id)
+                {
+                    Destroy(item.gameObject); // Destroy the matching GameObject
+                }
             }
         }
 
-        foreach (var item in toRemove)
-        {
-            Destroy(item); // Destroy the GameObject
-            popUpsList.Remove(item); // Remove the item from the list
-        }
     }
 }
