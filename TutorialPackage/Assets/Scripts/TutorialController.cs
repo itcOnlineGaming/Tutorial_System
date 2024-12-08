@@ -34,7 +34,7 @@ public class TutorialController : MonoBehaviour
             width = 900,
             height = 550,
             textColor = Color.black,
-            lifeTime = 3f,
+            lifeTime = 30f,
             popUpId = 0,
         };
 
@@ -42,36 +42,34 @@ public class TutorialController : MonoBehaviour
         {
             radius = 60,
             angle = 30,
-            lifeTime = 3f,
+            lifeTime = 30f,
             popUpId = 0,
         };
 
         SwipePopUpData SwipeData = new SwipePopUpData()
         {
-            state = "SwipeUp",
-            lifeTime = 3f,
+            state = "SwipeDown",
+            lifeTime = 30f,
             popUpId = 0,
         };
 
         TutorialServiceLocator.TutorialEventManager.RaiseEvent(TutorialEvent.TextBoxTutorial, position, TextBoxData);
 
-        yield return new WaitForSeconds(3f);
+        //yield return new WaitForSeconds(3f);
 
         TutorialServiceLocator.TutorialEventManager.RaiseEvent(TutorialEvent.ArrowTutorial, position, ArrowData);
 
-        yield return new WaitForSeconds(3f);
+       // yield return new WaitForSeconds(3f);
 
         TutorialServiceLocator.TutorialEventManager.RaiseEvent(TutorialEvent.ShakeTutorial, position, TextBoxData);
 
-        yield return new WaitForSeconds(3f);
+       // yield return new WaitForSeconds(3f);
 
         TutorialServiceLocator.TutorialEventManager.RaiseEvent(TutorialEvent.SwipeTutorial, position, SwipeData);
 
         yield return new WaitForSeconds(3f);
 
-        SwipeData.state = "SwipeDown";
-
-        TutorialServiceLocator.TutorialEventManager.RaiseEvent(TutorialEvent.SwipeTutorial, position, SwipeData);
+        popUpManager.CloseAllPopUps();
     }
 
     // Update is called once per frame
