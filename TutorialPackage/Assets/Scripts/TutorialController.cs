@@ -11,9 +11,13 @@ public class TutorialController : MonoBehaviour
     public PopUpManager popUpManager;
 
     public Transform position;
+
+    public bool hasShownTutorial;
     // Start is called before the first frame update
     void Start()
     {
+        //loads possible bool if exists
+        hasShownTutorial = BoolSaveSystem.LoadBool("hasShownTutorial");
         //Subscirbe to all events
         TutorialServiceLocator.TutorialEventManager.Subscribe(TutorialEvent.ArrowTutorial, popUpManager.ShowArrowPopUp);
 
@@ -24,7 +28,10 @@ public class TutorialController : MonoBehaviour
         TutorialServiceLocator.TutorialEventManager.Subscribe(TutorialEvent.SwipeTutorial, popUpManager.ShowSwipePopUp);
 
         //create your own way of showing the popUps
-        StartCoroutine(ShowTutorials());
+        if (!hasShownTutorial)
+        {
+            StartCoroutine(ShowTutorials());
+        }
     }
 
     public IEnumerator ShowTutorials()
@@ -71,6 +78,8 @@ public class TutorialController : MonoBehaviour
 
        yield return new WaitForSeconds(3f);
 
+
+       BoolSaveSystem.SaveBool("hasShownTutorial", true); //save your boolean to show true
     }
 
 }
