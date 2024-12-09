@@ -33,7 +33,7 @@ public class TutorialController : MonoBehaviour
         TutorialServiceLocator.TutorialEventManager.Subscribe(TutorialEvent.SwipeTutorial, popUpManager.ShowSwipePopUp);
 
         //create your own way of showing the popUps
-        if (hasShownTutorial)
+        if (!hasShownTutorial)
         {
             StartCoroutine(ShowTutorials());
         }
