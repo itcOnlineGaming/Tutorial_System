@@ -14,6 +14,7 @@ public class TutorialController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Subscirbe to all events
         TutorialServiceLocator.TutorialEventManager.Subscribe(TutorialEvent.ArrowTutorial, popUpManager.ShowArrowPopUp);
 
         TutorialServiceLocator.TutorialEventManager.Subscribe(TutorialEvent.TextBoxTutorial, popUpManager.ShowDefaultTextBoxPopUp);
@@ -22,6 +23,7 @@ public class TutorialController : MonoBehaviour
 
         TutorialServiceLocator.TutorialEventManager.Subscribe(TutorialEvent.SwipeTutorial, popUpManager.ShowSwipePopUp);
 
+        //create your own way of showing the popUps
         StartCoroutine(ShowTutorials());
     }
 
@@ -34,7 +36,7 @@ public class TutorialController : MonoBehaviour
             width = 900,
             height = 550,
             textColor = Color.black,
-            lifeTime = 30f,
+            lifeTime = 3f,
             popUpId = 0,
         };
 
@@ -42,39 +44,33 @@ public class TutorialController : MonoBehaviour
         {
             radius = 60,
             angle = 30,
-            lifeTime = 30f,
-            popUpId = 0,
+            lifeTime = 3f,
+            popUpId = 1,
         };
 
         SwipePopUpData SwipeData = new SwipePopUpData()
         {
             state = "SwipeDown",
-            lifeTime = 30f,
-            popUpId = 0,
+            lifeTime = 3f,
+            popUpId = 2,
         };
 
         TutorialServiceLocator.TutorialEventManager.RaiseEvent(TutorialEvent.TextBoxTutorial, position, TextBoxData);
 
-        //yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3f);
 
         TutorialServiceLocator.TutorialEventManager.RaiseEvent(TutorialEvent.ArrowTutorial, position, ArrowData);
 
-       // yield return new WaitForSeconds(3f);
+       yield return new WaitForSeconds(3f);
 
         TutorialServiceLocator.TutorialEventManager.RaiseEvent(TutorialEvent.ShakeTutorial, position, TextBoxData);
 
-       // yield return new WaitForSeconds(3f);
+       yield return new WaitForSeconds(3f);
 
-        TutorialServiceLocator.TutorialEventManager.RaiseEvent(TutorialEvent.SwipeTutorial, position, SwipeData);
+       TutorialServiceLocator.TutorialEventManager.RaiseEvent(TutorialEvent.SwipeTutorial, position, SwipeData);
 
-        yield return new WaitForSeconds(3f);
+       yield return new WaitForSeconds(3f);
 
-        popUpManager.closePopUp(0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
